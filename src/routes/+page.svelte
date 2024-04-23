@@ -7,7 +7,8 @@
 <svelte:head>
 	<title>Flashcards</title>
 </svelte:head>
-
-{#each data.flashcards as flashcard}
-	<Flashcard {flashcard} />
-{/each}
+<div class="max-w-2xl flex flex-wrap gap-4 m-auto">
+	{#each data.flashcards as flashcard}
+		<Flashcard {flashcard} />
+	{/each}
+</div>
