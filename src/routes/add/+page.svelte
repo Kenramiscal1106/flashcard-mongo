@@ -26,6 +26,10 @@
 					<Select.Item value="Research">Research</Select.Item>
 					<Select.Item value="Science">Science</Select.Item>
 					<Select.Item value="Entrep">Entrep</Select.Item>
+					<Select.Item value="Rewrite">Rewrite</Select.Item>
+					<Select.Item value="Theology">Theology</Select.Item>
+					<Select.Item value="FiliTwo">FiliTwo</Select.Item>
+					<Select.Item value="Infolit">Infolit</Select.Item>
 				</Select.Content>
 			</Select.Root> <br>
 			<Button variant="default" type="submit">Submit</Button>
