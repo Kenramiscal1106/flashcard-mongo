@@ -1,13 +1,15 @@
 <script lang="ts">
-    import type { LayoutData } from './$types';
-    
-    export let data: LayoutData;
+	import '../app.css';
+	import * as Menubar from '$lib/components/ui/menubar';
+	import { buttonVariants } from '$lib/components/ui/button';
+	import { page } from "$app/stores"
 </script>
-
-<nav>
-    <a href="/">Home</a>
-    <a href="/add">Add item</a>
-</nav>
-<main>
-    <slot></slot>
+<Menubar.Root>
+	<Menubar.Menu>
+		<a href="/" class={buttonVariants({variant: $page.route.id === "/" ? "default" : "ghost"})}>Home</a>
+		<a href="/add" class={buttonVariants({variant: $page.route.id === "/add" ? "default" : "ghost"})}>Add item</a>
+	</Menubar.Menu>
+</Menubar.Root>
+<main class="p-4">
+	<slot></slot>
 </main>
