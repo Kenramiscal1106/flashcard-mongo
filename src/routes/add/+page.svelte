@@ -1,8 +1,9 @@
 <script lang="ts">
+
 </script>
 
 <main>
-	<form action="?/add" method="POST">
+	<form method="POST" action="?/addObj">
 		<textarea name="question" placeholder="question" />
 		<textarea name="answer" placeholder="answer" />
 		<input type="text" name="subject" />
