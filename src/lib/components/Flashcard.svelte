@@ -12,32 +12,36 @@
 	import Button from './ui/button/button.svelte';
 </script>
 
-<Card class="max-w-xs min-h-[27rem]">
-	<CardHeader>
-		<CardTitle tag="h2">{flashcard.question}</CardTitle>
-		<CardDescription class="text-neutral-600 dark:text-neutral-300"
-			>{flashcard.subject}</CardDescription
-		>
-	</CardHeader>
-
-	<CardContent>
-		{#if open}
-		<p>{flashcard.answer}</p>
-	{/if}
-	</CardContent>
-
-	<CardFooter >
-		<Button
-			on:click={() => {
-				open = !open;
-			}}
-			>{open ? 'Hide' : 'Show'} answer
-		</Button>
-		<form method="POST" action="/add?/deleteObj" use:enhance>
-			<input type="text" value={flashcard._id} name="id" hidden />
-			<Button class="block" type="submit">Delete item</Button>
-		</form>
-	</CardFooter>
+<Card class="min-h-[27rem] flex flex-col flex-[0_0_20rem]">
+		<CardHeader>
+			<CardTitle tag="h2">{flashcard.question}</CardTitle>
+			<CardDescription class="text-neutral-600 dark:text-neutral-300"
+				>{flashcard.subject}</CardDescription
+			>
+		</CardHeader>
+	
+		<CardContent>
+			{#if open}
+			<p>{flashcard.answer}</p>
+		{/if}
+		</CardContent>
+	
+		<CardFooter class="mt-auto space-y-2">
+			<div class="w-full">
+				<Button class="block w-full"
+				on:click={() => {
+					open = !open;
+				}}
+					>{open ? 'Hide' : 'Show'} answer
+				</Button>
+			</div>
+			<div class="w-full">
+				<form method="POST" action="/add?/deleteObj" use:enhance>
+					<input type="text" value={flashcard._id} name="id" hidden />
+					<Button class="block w-full" type="submit">Delete item</Button>
+				</form>
+			</div>
+		</CardFooter>
 </Card>
 <style>
 	* {
