@@ -1,14 +1,13 @@
 import mongoose from 'mongoose';
 import { MONGO_URL } from '$env/static/private';
 
-mongoose.connect(MONGO_URL).then((value) => {
-	console.log(value);
-});
+mongoose.connect(MONGO_URL)
 
-type FlashCard = {
+export type FlashCard = {
 	subject: string;
 	question: string;
 	answer: string;
+	_id: string
 };
 
 const flashcard = new mongoose.Schema<FlashCard>({
@@ -26,4 +25,4 @@ const flashcard = new mongoose.Schema<FlashCard>({
 	}
 });
 
-export const Flashcard = mongoose.model('Flashcard', flashcard);
+export const Flashcard = mongoose.models.Flashcard || mongoose.model("Flashcard", flashcard);
