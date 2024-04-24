@@ -9,8 +9,11 @@
 	import { Textarea } from '$lib/components/ui/textarea';
 </script>
 
+<svelte:head>
+	<title>Flashcard | Add</title>
+</svelte:head>
 <form method="POST" action="?/addObj">
-	<Card class="max-w-sm m-auto">
+	<Card class="max-w-sm m-auto" open={false}>
 		<CardHeader>
 			<CardTitle tag="h2">Add FlashCards</CardTitle>
 		</CardHeader>
