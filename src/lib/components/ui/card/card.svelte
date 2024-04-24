@@ -2,15 +2,18 @@
 	import type { HTMLAttributes } from "svelte/elements";
 	import { cn } from "$lib/utils.js";
 
-	type $$Props = HTMLAttributes<HTMLDivElement>;
+	type $$Props = HTMLAttributes<HTMLDivElement> & {
+		open:boolean;
+	};
 
 	let className: $$Props["class"] = undefined;
 	export { className as class };
+	export let open:boolean;
 </script>
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div
-	class={cn("rounded-xl border bg-card text-card-foreground shadow", className)}
+	class={cn("backface-hidden rounded-xl border bg-card text-card-foreground shadow relative", className, open ? "rotate-card" : "rotate-default")}
 	{...$$restProps}
 	on:click
 	on:focusin
@@ -20,3 +23,19 @@
 >
 	<slot />
 </div>
+
+<style>
+	* {
+		box-sizing: border-box;
+	}
+	.rotate-card, .rotate-default {
+		transition: transform 0.5s ease;
+		perspective: 4rem;
+	}
+	.rotate-card {
+		transform: rotateY(180deg);
+	}
+	.rotate-default {
+		transform: rotateY(0deg);
+	}
+</style>
