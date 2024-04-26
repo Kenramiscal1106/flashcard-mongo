@@ -11,42 +11,23 @@
 	import Button from './ui/button/button.svelte';
 	import { fade } from 'svelte/transition';
 	import { cn } from '$lib/utils';
+	import CardContent from './ui/card/card-content.svelte';
 </script>
 
 <div class="flex-[0_0_20rem] relative pers-10 min-h-[27rem] card">
-	<Card class={cn("z-10 duration-200 absolute w-full h-full top-0 left-0 flex flex-col")} {open}>
+	<Card class={cn("z-10 duration-200 absolute w-full h-full top-0 left-0 flex flex-col")} {open} on:click={() => open = true}>
 		<CardHeader>
 			<CardDescription class="text-center text-neutral-600 dark:text-neutral-300"
 				>{flashcard.subject}</CardDescription
 			>
-			<CardTitle tag="h2"><span in:fade={{duration: 175}}>{flashcard.question}</span></CardTitle>
 		</CardHeader>
-
-	
-		<CardFooter class="mt-auto space-y-2">
-			<div class="w-full">
-				<Button
-					variant="outline"
-					class="block w-full"
-					on:click={() => {
-						open = !open;
-					}}
-					>{open ? 'Hide' : 'Show'} answer
-				</Button>
-			</div>
-			<div class="w-full">
-				<form method="POST" action="/add?/deleteObj" use:enhance>
-					<input type="text" value={flashcard._id} name="id" hidden />
-					<Button class="block w-full" type="submit" variant="destructive">Delete item</Button>
-				</form>
-			</div>
-		</CardFooter>
+		<CardContent>
+			<CardTitle tag="h2" class="text-center"><span in:fade={{duration: 175}}>{flashcard.question}</span></CardTitle>
+		</CardContent>
 	</Card>
-	<div class={cn(!open ? "rotate-card" : "rotate-default", "duration-200 absolute w-full h-full top-0 right-0 backface-hidden border bg-card shadow p-6 rounded-xl")}>
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
+	<div class={cn(!open ? "rotate-card" : "rotate-default", "duration-200 absolute w-full h-full top-0 right-0 backface-hidden border bg-card shadow p-6 rounded-xl flex flex-col justify-center")} on:click={() => open = false}>
 		<h4 class="text-center">{flashcard.answer}</h4>
-		<div>
-			<Button variant="outline" on:click={() => {open = false}}>X</Button>
-		</div>
 	</div>
 </div>
 <style>
