@@ -14,6 +14,7 @@ export const load = (async () => {
 			_id: item._id.toString()
 		}
 	})
+	console.log(flashcards)
     return {
         flashcards
     };
