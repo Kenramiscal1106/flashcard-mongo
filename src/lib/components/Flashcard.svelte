@@ -11,16 +11,19 @@
 	import Button from './ui/button/button.svelte';
 	import { fade } from 'svelte/transition';
 	import { cn } from '$lib/utils';
-	// import { modalStore, type ModalState } from '$lib/stores';
+	import { modalStore } from '$lib/stores';
 
 	export let flashcard: FlashCard;
 	export let quiz: boolean;
 
 	let open = false;
-	function fireAction(type: ModalState['type']) {
-		return (e:Event) => {
-			e.stopPropagation()
-		};
+	function handleEdit(e:MouseEvent) {
+		e.stopPropagation()
+		modalStore.set({
+			flashcard,
+			open: true
+		})
+		console.log(flashcard.box)
 	}
 </script>
 
@@ -42,9 +45,7 @@
 		</CardContent>
 		{#if !quiz}
 		<CardFooter>
-			<Button on:click={fireAction("flashcard-update")}>Update card</Button>
-			<Button on:click={fireAction("flashcard-delete")}>Delete card</Button>
-			<Button on:click={fireAction("update-box")}>update box</Button>
+			<Button on:click={handleEdit}>Edit card</Button>
 		</CardFooter>
 		{/if}
 	</Card>
