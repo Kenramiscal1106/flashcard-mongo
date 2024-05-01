@@ -13,14 +13,15 @@ export const actions: Actions = {
 		const question = formData.get('question');
 		const answer = formData.get('answer');
 		const subject = formData.get('subject');
+		const box = formData.get("box");
 
 		try {
-			await Flashcard.create({ question, answer, subject });
+			await Flashcard.create({ question, answer, subject, box });
 		} catch {
 			throw error(500, 'an error occured');
 		}
 	},
-	deleteObj: async({request}) => {
+	deleteObj: async ({ request }) => {
 		const formData = await request.formData();
 		const id = formData.get('id')
 
@@ -32,5 +33,27 @@ export const actions: Actions = {
 		catch {
 			console.log("error delete")
 		}
-	}
+	},
+	updateObj: async ({ request }) => {
+		const formData = await request.formData();
+		const question = formData.get('question');
+		const answer = formData.get('answer');
+		const subject = formData.get('subject');
+		const box = formData.get("box");
+		const id = formData.get("id")
+
+		try {
+			await Flashcard.updateOne({
+				_id: id
+			}, {
+				question, answer, subject, box
+			})
+		}
+		catch {
+			console.log("error delete")
+		}
+		return {
+			success: true
+		}
+	},
 };
