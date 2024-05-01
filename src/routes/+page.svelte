@@ -7,8 +7,8 @@
 <svelte:head>
 	<title>Flashcards</title>
 </svelte:head>
-<div class="max-w-2xl flex flex-wrap gap-4 m-auto">
+<div class="max-w-2xl flex flex-wrap gap-4 m-auto justify-center">
 	{#each data.flashcards as flashcard}
-		<Flashcard {flashcard} />
+		<Flashcard {flashcard}  quiz={false} />
 	{/each}
 </div>
