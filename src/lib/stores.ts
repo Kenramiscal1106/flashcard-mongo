@@ -1,12 +1,20 @@
 import { writable } from "svelte/store";
 
+export const BoxOptions = [
+    "everyday",
+    "1-2 days",
+    "4-7 days",
+    "1 1/2 week",
+    "2 weeks",
+    "1 month"
+] as const
+
 export type ModalState = {
     open: boolean,
-    type: "flashcard-update" | "flashcard-delete" | "update-box",
     flashcard: {
         _id: string,
         subject:string,
-        box?: string,
+        box?: typeof BoxOptions[number],
         question: string,
         answer: string
     }
@@ -14,7 +22,6 @@ export type ModalState = {
 
 export const modalStore = writable<ModalState>({
     open: false,
-    type: "flashcard-update",
     flashcard: {
         _id: "",
         subject:"",
