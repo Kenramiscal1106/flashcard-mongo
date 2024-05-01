@@ -7,6 +7,7 @@
 	import { Input } from '$lib/components/ui/input';
 	import * as Select from "$lib/components/ui/select"
 	import { Textarea } from '$lib/components/ui/textarea';
+	import { BoxOptions } from '$lib/stores';
 </script>
 
 <svelte:head>
@@ -33,6 +34,16 @@
 					<Select.Item value="Theology">Theology</Select.Item>
 					<Select.Item value="FiliTwo">FiliTwo</Select.Item>
 					<Select.Item value="Infolit">Infolit</Select.Item>
+				</Select.Content>
+			</Select.Root> <br>
+			<Select.Root>
+				<Select.Input name="box"></Select.Input>
+				<Select.Label>Classification</Select.Label>
+				<Select.Trigger><Select.Value placeholder="Select box"/></Select.Trigger>
+				<Select.Content>
+					{#each BoxOptions as boxOption}
+						<Select.Item value={boxOption}>{boxOption}</Select.Item>
+					{/each}
 				</Select.Content>
 			</Select.Root> <br>
 			<Button variant="default" type="submit">Submit</Button>
