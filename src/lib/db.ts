@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { MONGO_URL } from '$env/static/private';
+import type { BoxOptions } from './stores';
 
 mongoose.connect(MONGO_URL)
 
@@ -7,7 +8,7 @@ export type FlashCard = {
 	subject: string;
 	question: string;
 	answer: string;
-	box?: string;
+	box?: typeof BoxOptions[number];
 	_id: string
 };
 
