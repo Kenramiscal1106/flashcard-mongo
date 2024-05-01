@@ -8,9 +8,20 @@
 	export let data: PageData;
 	let item = 1;
 	let shuffled: typeof data.flashcards = [];
+	function handleKeyDown(e) {
+		if (e.key === "ArrowRight") {
+			item++
+		} else if (e.key === "ArrowLeft") {
+			item--
+		}
+	}
 	onMount(() => {
 		shuffled = shuffle(data.flashcards);
 		console.log(shuffled);
+		window.addEventListener("keydown", handleKeyDown)
+		return () => {
+			window.removeEventListener("keydown", handleKeyDown)
+		}
 	});
 	$: console.log(shuffled[item - 1]);
 	$: {
@@ -26,7 +37,7 @@
 <div class="m-auto flex gap-8 items-center justify-center">
 	{#if shuffled.length !== 0}
 		{#key item}
-			<Flashcard flashcard={shuffled[item - 1]} />
+			<Flashcard flashcard={shuffled[item - 1]} quiz={true} />
 		{/key}
 	{/if}
 </div>
