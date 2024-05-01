@@ -7,6 +7,7 @@ export type FlashCard = {
 	subject: string;
 	question: string;
 	answer: string;
+	box?: string;
 	_id: string
 };
 
@@ -22,6 +23,9 @@ const flashcard = new mongoose.Schema<FlashCard>({
 	subject: {
 		type: String,
 		required: true
+	},
+	box: {
+		type: String
 	}
 });
 
