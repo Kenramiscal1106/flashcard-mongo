@@ -1,5 +1,5 @@
 // place files you want to import through the `$lib` alias in this folder.
-export function shuffle<T>(arr: T[]) {
+export async function shuffle<T>(arr: T[]) {
     let finalArr = new Array<T>();
     while (arr.length > 0) {
       let randomIndex = Math.floor(Math.random() * arr.length);
@@ -8,3 +8,13 @@ export function shuffle<T>(arr: T[]) {
     }
     return finalArr;
   }
+
+export const subjects = [
+  "Research",
+  "Science",
+  "Entrep",
+  "Rewrite",
+  "Theology",
+  "FiliTwo",
+  "Infolit"
+] as const
