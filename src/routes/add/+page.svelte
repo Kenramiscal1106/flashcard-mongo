@@ -1,5 +1,6 @@
 <script lang="ts">
-	import { Button } from '$lib/components/ui/button';
+	import { subjects } from '$lib';
+import { Button } from '$lib/components/ui/button';
 	import CardContent from '$lib/components/ui/card/card-content.svelte';
 	import CardHeader from '$lib/components/ui/card/card-header.svelte';
 	import CardTitle from '$lib/components/ui/card/card-title.svelte';
@@ -27,13 +28,9 @@
 				<Select.Label>Subject</Select.Label>
 				<Select.Trigger><Select.Value placeholder="Select subject"/></Select.Trigger>
 				<Select.Content>
-					<Select.Item value="Research">Research</Select.Item>
-					<Select.Item value="Science">Science</Select.Item>
-					<Select.Item value="Entrep">Entrep</Select.Item>
-					<Select.Item value="Rewrite">Rewrite</Select.Item>
-					<Select.Item value="Theology">Theology</Select.Item>
-					<Select.Item value="FiliTwo">FiliTwo</Select.Item>
-					<Select.Item value="Infolit">Infolit</Select.Item>
+					{#each subjects as subject}
+						<Select.Item value={subject}>{subject}</Select.Item>
+					{/each}
 				</Select.Content>
 			</Select.Root> <br>
 			<Select.Root>
