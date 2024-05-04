@@ -1,5 +1,5 @@
 import { Flashcard } from '$lib/db';
-import type { PageServerLoad } from './$types';
+import type { LayoutServerLoad } from './$types';
 
 export const load = (async () => {
     const flashcards = (await Flashcard.find({}, {
@@ -18,4 +18,4 @@ export const load = (async () => {
     return {
         flashcards
     };
-}) satisfies PageServerLoad;
+}) satisfies LayoutServerLoad;
