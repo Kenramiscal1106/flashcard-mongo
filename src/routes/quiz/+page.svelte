@@ -1,77 +1,12 @@
 <script lang="ts">
-	import { shuffle } from '$lib';
-	import type { PageData } from './$types';
-	import Flashcard from '$lib/components/Flashcard.svelte';
-	import Button from '$lib/components/ui/button/button.svelte';
-	import { onMount } from 'svelte';
-
-	export let data: PageData;
-	let item = 1;
-	let shuffled: typeof data.flashcards = [];
-	function handleKeyDown(e) {
-		if (e.key === "ArrowRight") {
-			item++
-		} else if (e.key === "ArrowLeft") {
-			item--
-		}
-	}
-	onMount(() => {
-		shuffled = shuffle(data.flashcards);
-		console.log(shuffled);
-		window.addEventListener("keydown", handleKeyDown)
-		return () => {
-			window.removeEventListener("keydown", handleKeyDown)
-		}
-	});
-	$: console.log(shuffled[item - 1]);
-	$: {
-		if (item > shuffled.length) {
-			item = 1;
-		}
-		if (item < 1) {
-			item = shuffled.length;
-		}
-	}
+	import { subjects } from '$lib';
 </script>
-
-<div class="m-auto flex gap-8 items-center justify-center">
-	{#if shuffled.length !== 0}
-		{#key item}
-			<Flashcard flashcard={shuffled[item - 1]} quiz={true} />
-		{/key}
-	{/if}
+<div class="max-w-lg m-auto px-4">
+	<div class="flex flex-col gap-4">
+		{#each subjects as subject}
+			<a href={"/quiz/" + subject} class="rounded-xl border bg-card text-card-foreground shadow p-4 block">{subject}</a>
+		{/each}
+	</div>
 </div>
-<div class="flex gap-3 item-center justify-center p-5">
-	<span>
-		<Button variant="outline" on:click={() => item--}>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-				fill="currentColor"
-				class="bi bi-chevron-left"
-				viewBox="0 0 16 16"
-			>
-				<path
-					fill-rule="evenodd"
-					d="M11.354 1.646a.5.5 0 0 1 0 .708L5.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0"
-				/>
-			</svg>
-		</Button>
-		<Button variant="outline" on:click={() => item++}>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				width="16"
-				height="16"
-				fill="currentColor"
-				class="bi bi-chevron-right"
-				viewBox="0 0 16 16"
-			>
-				<path
-					fill-rule="evenodd"
-					d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708"
-				/>
-			</svg>
-		</Button>
-	</span>
-</div>
+<!-- 
+ -->

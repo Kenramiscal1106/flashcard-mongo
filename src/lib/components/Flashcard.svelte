@@ -23,7 +23,6 @@
 			flashcard,
 			open: true
 		})
-		console.log(flashcard.box)
 	}
 </script>
 
