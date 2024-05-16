@@ -17,12 +17,15 @@
 	export let quiz: boolean;
 
 	let open = false;
-	function handleEdit(e:MouseEvent) {
-		e.stopPropagation()
-		modalStore.set({
-			flashcard,
-			open: true
-		})
+	function handleEdit(mode: 'edit' | 'delete') {
+		return (e: MouseEvent) => {
+			e.stopPropagation();
+			modalStore.set({
+				flashcard,
+				open: true,
+				mode: mode
+			});
+		};
 	}
 </script>
 
@@ -43,9 +46,12 @@
 			>
 		</CardContent>
 		{#if !quiz}
-		<CardFooter>
-			<Button on:click={handleEdit}>Edit card</Button>
-		</CardFooter>
+			<CardFooter>
+				<Button on:click={handleEdit('edit')}>Edit card</Button>
+			</CardFooter>
+			<CardFooter>
+				<Button on:click={handleEdit('delete')}>Delete card</Button>
+			</CardFooter>
 		{/if}
 	</Card>
 	<!-- svelte-ignore a11y-no-static-element-interactions -->
