@@ -22,3 +22,5 @@ export const subjects = [
 	'FiliTwo',
 	'Infolit'
 ] as const;
+
+export type HeroIconVariant = 'solid' | 'outline' | 'mini';

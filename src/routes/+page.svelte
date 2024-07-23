@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Flashcard from '$lib/components/Flashcard.svelte';
 	import {
 		Dialog,
 		DialogHeader,
@@ -28,6 +27,7 @@
 		}
 	}
 	import { invalidate } from '$app/navigation';
+	import EditCard from '$lib/components/EditCard.svelte';
 </script>
 
 <svelte:head>
@@ -66,9 +66,9 @@
 		</div>
 	</form>
 </div>
-<div class="max-w-2xl flex flex-wrap gap-4 m-auto justify-center">
+<div class="flex flex-col max-w-2xl gap-4 m-auto justify-center">
 	{#each filteredFlashcards as flashcard}
-		<Flashcard {flashcard} quiz={false} />
+		<EditCard {flashcard} />
 	{/each}
 	<Dialog open={$modalStore.open && $modalStore.mode === 'edit'}>
 		<DialogContent class="sm:max-w-[425px]">
