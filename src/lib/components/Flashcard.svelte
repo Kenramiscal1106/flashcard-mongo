@@ -80,9 +80,9 @@
 		transform-style: preserve-3d;
 	}
 	.rotate-card {
-		transform: rotateY(-180deg);
+		transform: rotateX(-180deg);
 	}
 	.rotate-default {
-		transform: rotateY(0deg);
+		transform: rotateX(0deg);
 	}
 </style>
