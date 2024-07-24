@@ -35,51 +35,44 @@
 	}
 </script>
 
-<div class="card">
-	<Card class={cn('z-10 duration-200 w-full h-full flex flex-col')} open={false}>
-		<CardHeader>
-			<CardDescription class="text-center text-neutral-600 dark:text-neutral-300">
-				{flashcard.subject}</CardDescription
-			>
-		</CardHeader>
-		<CardContent>
-			<div class="flex">
-				<CardTitle tag="h2">
-					{#key open}
-						<span in:fade={{ duration: 175 }}> {open ? flashcard.answer : flashcard.question}</span>
-					{/key}</CardTitle
+<Card class={cn('z-10 duration-200 flex flex-col flex-[1_0_0%]')} open={false}>
+	<CardHeader class="flex-shrink">
+		<CardDescription class="text-center text-neutral-600 dark:text-neutral-300">
+			{flashcard.subject}</CardDescription
+		>
+	</CardHeader>
+	<CardContent class="flex-grow">
+		<div class="flex flex-col h-full">
+			<div>
+				<CardTitle tag="h4">
+					<span in:fade={{ duration: 175 }}> {flashcard.question}</span>
+				</CardTitle>
+				<span
+					class={cn(
+						'dark:text-neutral-400 text-neutral-700 transition-opacity',
+						open ? 'opacity-100' : 'opacity-0'
+					)}>{flashcard.answer}</span
 				>
-				<div class="ml-auto flex gap-2 pl-4 items-center">
-					<Button class="h-max p-2 block" on:click={toggleOpen} variant="outline">
-						{#if open}
-							<EyeIcon variant="outline" />
-						{:else}
-							<EyeSlashIcon variant="outline" />
-						{/if}
-					</Button>
-					<Button on:click={handleEdit('edit')} class="h-max p-2 block" variant="outline">
-						<PencilIcon variant="outline" />
-					</Button>
-					<Button on:click={handleEdit('delete')} class="h-max p-2 block" variant="outline"
-						><TrashIcon variant="outline" /></Button
-					>
-				</div>
 			</div>
-		</CardContent>
-		<CardFooter></CardFooter>
-	</Card>
-	<!-- svelte-ignore a11y-no-static-element-interactions -->
-	<!-- svelte-ignore a11y-click-events-have-key-events -->
-	<!-- <div
-		class={cn(
-			!open ? 'rotate-card' : 'rotate-default',
-			'duration-200 absolute w-full h-full top-0 right-0 backface-hidden border bg-card shadow p-6 rounded-xl flex flex-col justify-center'
-		)}
-		on:click={() => (open = false)}
-	>
-		<h4 class="text-center">{flashcard.answer}</h4>
-	</div> -->
-</div>
+			<div class="mt-auto flex gap-2 pt-4">
+				<Button class="h-max p-2 block" on:click={toggleOpen} variant="outline">
+					{#if open}
+						<EyeIcon variant="outline" />
+					{:else}
+						<EyeSlashIcon variant="outline" />
+					{/if}
+				</Button>
+				<Button on:click={handleEdit('edit')} class="h-max p-2 block" variant="outline">
+					<PencilIcon variant="outline" />
+				</Button>
+				<Button on:click={handleEdit('delete')} class="h-max p-2 block" variant="outline"
+					><TrashIcon variant="outline" /></Button
+				>
+			</div>
+		</div>
+	</CardContent>
+	<CardFooter></CardFooter>
+</Card>
 
 <style>
 	* {
