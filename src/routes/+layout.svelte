@@ -3,6 +3,10 @@
 	import * as Menubar from '$lib/components/ui/menubar';
 	import { buttonVariants } from '$lib/components/ui/button';
 	import { page } from '$app/stores';
+	import { modalStore } from '$lib/stores';
+	$: if ($page.route.id !== '/') {
+		$modalStore.open = false;
+	}
 </script>
 
 <svelte:head>
@@ -17,8 +21,7 @@
 			>
 			<a
 				href="/add"
-				class={buttonVariants({ variant: $page.route.id === '/add' ? 'default' : 'ghost' })}
-				>Add</a
+				class={buttonVariants({ variant: $page.route.id === '/add' ? 'default' : 'ghost' })}>Add</a
 			>
 			<a
 				href="/quiz"
