@@ -11,12 +11,12 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { BoxOptions, modalStore } from '$lib/stores';
-	import type { PageData } from './$types';
+	import type { PageData } from '../$types';
 	import { subjects } from '$lib';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	export let data: PageData;
-	let filteredFlashcards: typeof data.flashcards = data.flashcards;
+	let filteredFlashcards: typeof data.flashcards = data.flascards;
 	$: subjectFilter = $page.url.searchParams.get('subject');
 	$: {
 		if (subjectFilter && subjectFilter !== '') {
