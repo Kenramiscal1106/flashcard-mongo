@@ -11,6 +11,9 @@ export type FlashCard = {
 	box?: typeof BoxOptions[number];
 	_id: string
 };
+export type Subject = {
+	name: string;
+}
 
 const flashcard = new mongoose.Schema<FlashCard>({
 	answer: {
@@ -30,4 +33,13 @@ const flashcard = new mongoose.Schema<FlashCard>({
 	}
 });
 
+const subject = new mongoose.Schema<Subject>({
+	name: {
+		type: String,
+		required: true
+	}
+})
+
 export const Flashcard = mongoose.models.Flashcard || mongoose.model("Flashcard", flashcard);
+
+export const Subject = mongoose.models.Subject || mongoose.model("subjects", flashcard);
