@@ -20,7 +20,7 @@ const backfaceVisibility = plugin(function ({ addUtilities }) {
 });
 /** @type {import('tailwindcss').Config} */
 const config = {
-	content: ['./src/**/*.{html,js,svelte,ts}'],
+	content: ['./src/**/*.{html,js,svelte,ts,css}'],
 	safelist: ['dark'],
 	plugins: [backfaceVisibility],
 	theme: {
