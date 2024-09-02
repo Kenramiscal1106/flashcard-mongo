@@ -12,6 +12,14 @@ export async function shuffle<T>(arr: T[]) {
 export const subjects = [
 	'Biology',
 	'Physics',
+	"ReseTwo",
+	"Empotek",
+	"Litera",
+	"EarthSci",
+	"Philosophy",
+	"FiliTri"
+
+	/* 
 	'Chemistry',
 	'Earth Science, Astronomy',
 	'Research',
@@ -20,7 +28,7 @@ export const subjects = [
 	'Rewrite',
 	'Theology',
 	'FiliTwo',
-	'Infolit'
+	'Infolit' */
 ] as const;
 
 export type HeroIconVariant = 'solid' | 'outline' | 'mini';
