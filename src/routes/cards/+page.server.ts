@@ -1,5 +1,5 @@
 import { Flashcard } from '$lib/db';
-import type { Actions, PageServerLoad } from '../$types';
+import type { PageServerLoad } from './$types';
 
 export const load = (async ({ depends }) => {
 	const flashcards = (

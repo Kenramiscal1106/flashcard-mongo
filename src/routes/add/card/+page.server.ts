@@ -1,7 +1,6 @@
 import { Flashcard } from '$lib/db';
 import { error } from '@sveltejs/kit';
-import type { Actions, PageServerLoad } from '../$types';
-import mongoose from 'mongoose';
+import type { Actions, PageServerLoad } from './$types';
 
 export const load = (async () => {
 	return {};

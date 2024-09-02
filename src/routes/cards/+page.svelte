@@ -11,12 +11,12 @@
 	import { Button } from '$lib/components/ui/button';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { BoxOptions, modalStore } from '$lib/stores';
-	import type { PageData } from '../$types';
+	import type { PageData } from './$types';
 	import { subjects } from '$lib';
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	export let data: PageData;
-	let filteredFlashcards: typeof data.flashcards = data.flascards;
+	let filteredFlashcards: typeof data.flashcards = data.flashcards;
 	$: subjectFilter = $page.url.searchParams.get('subject');
 	$: {
 		if (subjectFilter && subjectFilter !== '') {
@@ -65,6 +65,9 @@
 				<Button type="submit">Filter</Button>
 			</div>
 		</form>
+		<div>
+			{filteredFlashcards.length} results
+		</div>
 	</div>
 	<div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2 gap-4">
 		{#each filteredFlashcards as flashcard}
@@ -81,7 +84,7 @@
 			</DialogDescription>
 		</DialogHeader>
 		<form
-			action="/add?/updateObj"
+			action="/add/card?/updateObj"
 			method="POST"
 			use:enhance={() => {
 				return async ({ result }) => {
@@ -147,7 +150,7 @@
 			<DialogDescription>Are you sure you want to delete this card?</DialogDescription>
 		</DialogHeader>
 		<form
-			action="/add?/deleteObj"
+			action="/add/card?/deleteObj"
 			method="POST"
 			use:enhance={() => {
 				return async ({ result }) => {

@@ -18,7 +18,7 @@
 		<div class="m-auto">
 			<a
 				href="/"
-				class={buttonVariants({ variant: $page.route.id === '/card' ? 'default' : 'ghost' })}
+				class={buttonVariants({ variant: $page.route.id === '/cards' ? 'default' : 'ghost' })}
 				>Home</a
 			>
 			<a
