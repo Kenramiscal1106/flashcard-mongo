@@ -16,7 +16,6 @@
 	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	export let data: PageData;
-	let filteredFlashcards: typeof data.flashcards = data.flashcards;
 	import { invalidate } from '$app/navigation';
 	import EditCard from '$lib/components/EditCard.svelte';
 </script>
@@ -28,11 +27,11 @@
 	<div class="my-2">
 		<h2>{$page.params.subject}</h2>
 		<div>
-			{filteredFlashcards.length} results
+			{data.flashcards.length} results
 		</div>
 	</div>
 	<div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2 gap-4">
-		{#each filteredFlashcards as flashcard}
+		{#each data.flashcards as flashcard}
 			<EditCard {flashcard} />
 		{/each}
 	</div>
@@ -52,7 +51,7 @@
 				return async ({ result }) => {
 					if ('data' in result && typeof result.data !== 'undefined' && result.data.success) {
 						$modalStore.open = false;
-						await invalidate('app:root');
+						await invalidate('app:updateCard');
 					}
 				};
 			}}

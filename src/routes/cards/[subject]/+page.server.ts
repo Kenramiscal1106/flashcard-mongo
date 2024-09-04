@@ -26,7 +26,7 @@ export const load = (async ({ depends, params }) => {
 			_id: item._id.toString()
 		};
 	});
-	depends('app:root');
+	depends('app:updateCard');
 	return {
 		flashcards
 	};

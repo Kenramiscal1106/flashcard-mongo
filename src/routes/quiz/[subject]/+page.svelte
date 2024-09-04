@@ -19,15 +19,6 @@
 			window.removeEventListener('keydown', handleKeyDown);
 		};
 	});
-
-	/* $: {
-		if (item > data.flashcards.length) {
-			item = 1;
-		}
-		if (item < 1) {
-			item = data.flashcards.length;
-		}
-	} */
 </script>
 
 <div class="m-auto flex gap-8 items-center justify-center">
