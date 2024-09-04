@@ -35,11 +35,7 @@
 		{open}
 		on:click={() => (open = true)}
 	>
-		<CardHeader>
-			<CardDescription class="text-center text-neutral-600 dark:text-neutral-300"
-				>{flashcard.subject}</CardDescription
-			>
-		</CardHeader>
+		<CardHeader></CardHeader>
 		<CardContent>
 			<CardTitle tag="h2" class="text-center"
 				><span in:fade={{ duration: 175 }}>{flashcard.question}</span></CardTitle
@@ -59,11 +55,18 @@
 	<div
 		class={cn(
 			!open ? 'rotate-card' : 'rotate-default',
-			'duration-200 absolute w-full h-full top-0 right-0 backface-hidden border bg-card shadow p-6 rounded-xl flex flex-col justify-center'
+			'duration-200 absolute w-full h-full top-0 right-0 backface-hidden border bg-card shadow p-6 rounded-xl'
 		)}
 		on:click={() => (open = false)}
 	>
-		<h4 class="text-center">{flashcard.answer}</h4>
+		<CardHeader>
+			<!-- <CardDescription class="text-center text-neutral-600 dark:text-neutral-300"
+			>{flashcard.subject}</CardDescription
+		> -->
+		</CardHeader>
+		<CardContent>
+			<CardTitle tag="h4" class="text-center">{flashcard.answer}</CardTitle>
+		</CardContent>
 	</div>
 </div>
 
