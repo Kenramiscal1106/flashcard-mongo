@@ -16,9 +16,7 @@
 <Menubar.Root>
 	<Menubar.Menu>
 		<div class="m-auto">
-			<a
-				href="/"
-				class={buttonVariants({ variant: $page.route.id === '/cards' ? 'default' : 'ghost' })}
+			<a href="/" class={buttonVariants({ variant: $page.route.id === '/' ? 'default' : 'ghost' })}
 				>Home</a
 			>
 			<a
