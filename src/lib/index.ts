@@ -15,7 +15,7 @@ export const subjects = [
 	"ReseTwo",
 	"Empotek",
 	"Litera",
-	"EarthSci",
+	"Earthsci",
 	"Philosophy",
 	"FiliTri"
 
