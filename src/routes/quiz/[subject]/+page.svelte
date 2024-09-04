@@ -20,14 +20,14 @@
 		};
 	});
 
-	$: {
+	/* $: {
 		if (item > data.flashcards.length) {
 			item = 1;
 		}
 		if (item < 1) {
 			item = data.flashcards.length;
 		}
-	}
+	} */
 </script>
 
 <div class="m-auto flex gap-8 items-center justify-center">
@@ -45,7 +45,7 @@
 {#if data.flashcards.length > 0}
 	<div class="flex gap-3 item-center justify-center p-5">
 		<span>
-			<Button variant="outline" on:click={() => item--}>
+			<Button variant="outline" on:click={() => item--} disabled={item - 1 <= 0}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="16"
@@ -60,7 +60,7 @@
 					/>
 				</svg>
 			</Button>
-			<Button variant="outline" on:click={() => item++}>
+			<Button variant="outline" on:click={() => item++} disabled={item >= data.flashcards.length}>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="16"
@@ -78,3 +78,12 @@
 		</span>
 	</div>
 {/if}
+<!-- progress bar -->
+<div class="">
+	<div class="relative bg-neutral-200 rounded-md h-3 z-30 overflow-hidden">
+		<div
+			class="absolute bg-blue-500 rounded-md h-3 transition-all duration-150"
+			style:width={`${(item / data.flashcards.length) * 100}%`}
+		></div>
+	</div>
+</div>
