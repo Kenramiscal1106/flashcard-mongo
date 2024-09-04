@@ -3,6 +3,7 @@
 	import Flashcard from '$lib/components/Flashcard.svelte';
 	import Button from '$lib/components/ui/button/button.svelte';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 	export let data: PageData;
 
 	let item = 1;
@@ -21,6 +22,9 @@
 	});
 </script>
 
+<svelte:head>
+	<title>{$page.params.subject}</title>
+</svelte:head>
 <div class="m-auto flex gap-8 items-center justify-center">
 	{#if data.flashcards.length > 0}
 		{#key item}
@@ -32,7 +36,18 @@
 		</div>
 	{/if}
 </div>
-
+<!-- progress bar -->
+<div class="max-w-xl mx-auto my-3">
+	<div class="text-center my-1">
+		{item} / {data.flashcards.length}
+	</div>
+	<div class="relative bg-neutral-200 rounded-md h-3 z-30 overflow-hidden">
+		<div
+			class="absolute bg-blue-500 rounded-md h-3 transition-all duration-150"
+			style:width={`${(item / data.flashcards.length) * 100}%`}
+		></div>
+	</div>
+</div>
 {#if data.flashcards.length > 0}
 	<div class="flex gap-3 item-center justify-center p-5">
 		<span>
@@ -69,12 +84,3 @@
 		</span>
 	</div>
 {/if}
-<!-- progress bar -->
-<div class="">
-	<div class="relative bg-neutral-200 rounded-md h-3 z-30 overflow-hidden">
-		<div
-			class="absolute bg-blue-500 rounded-md h-3 transition-all duration-150"
-			style:width={`${(item / data.flashcards.length) * 100}%`}
-		></div>
-	</div>
-</div>
