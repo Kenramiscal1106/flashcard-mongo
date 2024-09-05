@@ -12,12 +12,12 @@ export async function shuffle<T>(arr: T[]) {
 export const subjects = [
 	'Biology',
 	'Physics',
-	"ReseTwo",
+	"Resetwo",
 	"Empotek",
 	"Litera",
 	"Earthsci",
 	"Philosophy",
-	"FiliTri"
+	"Filitri"
 
 	/* 
 	'Chemistry',
