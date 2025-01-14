@@ -10,20 +10,25 @@ export async function shuffle<T>(arr: T[]) {
 }
 
 export const subjects = [
-	'Biology',
-	'Biology 2nd',
-	'Physics',
-	"Resetwo",
-	'Resetwo 2nd',
-	"Empotek",
-	'Empotek 2nd',
-	"Litera",
-	"Earthsci",
-	'Earthsci 2nd',
-	"Philosophy",
-	"Filitri",
-	"Filitri 2nd"
-
+	// 'Biology',
+	// 'Biology 2nd',
+	// 'Physics',
+	// "Resetwo",
+	// 'Resetwo 2nd',
+	// "Empotek",
+	// 'Empotek 2nd',
+	// "Litera",
+	// "Earthsci",
+	// 'Earthsci 2nd',
+	// "Philosophy",
+	// "Filitri",
+	// "Filitri 2nd"
+	"Contare",
+	"DISSSRED",
+	"Perdev",
+	"Biology",
+	"ResePro",
+	"Theofor"
 	/* 
 	'Chemistry',
 	'Earth Science, Astronomy',
