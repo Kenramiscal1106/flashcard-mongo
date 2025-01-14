@@ -20,10 +20,6 @@
 				>Home</a
 			>
 			<a
-				href="/add"
-				class={buttonVariants({ variant: $page.route.id === '/add' ? 'default' : 'ghost' })}>Add</a
-			>
-			<a
 				href="/quiz"
 				class={buttonVariants({ variant: $page.route.id === '/quiz' ? 'default' : 'ghost' })}
 				>Quiz</a
