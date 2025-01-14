@@ -36,11 +36,7 @@
 </script>
 
 <Card class={cn('z-10 duration-200 flex flex-col flex-[1_0_0%]')} open={false}>
-	<CardHeader class="flex-shrink">
-		<CardDescription class="text-center text-neutral-600 dark:text-neutral-300">
-			{flashcard.subject}</CardDescription
-		>
-	</CardHeader>
+	<CardHeader class="flex-shrink"></CardHeader>
 	<CardContent class="flex-grow">
 		<div class="flex flex-col h-full">
 			<div>

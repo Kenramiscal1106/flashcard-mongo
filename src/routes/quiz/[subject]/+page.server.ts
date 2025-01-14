@@ -6,7 +6,7 @@ export const load = (async ({ params }) => {
 	const flashcards = (
 		await Flashcard.find(
 			{
-				subject: params.subject
+				subject: params.subject.toLowerCase()
 			},
 			{
 				question: true,
