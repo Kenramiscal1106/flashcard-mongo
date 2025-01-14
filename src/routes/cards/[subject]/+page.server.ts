@@ -2,13 +2,10 @@ import { Flashcard } from '$lib/db';
 import type { PageServerLoad } from './$types';
 
 export const load = (async ({ depends, params }) => {
-	const subject = (param: string) => {
-		return param.charAt(0).toUpperCase() + param.slice(1);
-	};
 	const flashcards = (
 		await Flashcard.find(
 			{
-				subject: subject(params.subject)
+				subject: params.subject
 			},
 			{
 				question: true,

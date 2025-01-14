@@ -8,7 +8,7 @@
 		DialogFooter
 	} from '$lib/components/ui/dialog';
 	import * as Select from '$lib/components/ui/select';
-	import { Button } from '$lib/components/ui/button';
+	import { Button, buttonVariants } from '$lib/components/ui/button';
 	import { Textarea } from '$lib/components/ui/textarea';
 	import { BoxOptions, modalStore } from '$lib/stores';
 	import type { PageData } from './$types';
@@ -23,14 +23,33 @@
 <svelte:head>
 	<title>Flashcards</title>
 </svelte:head>
-<div class="max-w-full lg:max-w-4xl xl:max-w-5xl sm:max-w-2xl m-auto">
-	<div class="my-2">
+<div class="max-w-full md:max-w-3xl sm:max-w-2xl m-auto">
+	<div class="my-2 text-center">
 		<h2>{$page.params.subject}</h2>
+		<div class="my-2">
+			{#if data.flashcards.length === 0}
+				There are still no cards here.
+			{/if}
+		</div>
 		<div>
-			{data.flashcards.length} results
+			<Button
+				on:click={() =>
+					modalStore.set({
+						open: true,
+						mode: 'create',
+						flashcard: {
+							_id: '',
+							answer: '',
+							question: '',
+							subject: $page.params.subject,
+							box: 'everyday'
+						}
+					})}
+				variant="default">Add card</Button
+			>
 		</div>
 	</div>
-	<div class="grid grid-cols-1 lg:grid-cols-3 xl:grid-cols-4 sm:grid-cols-2 gap-4">
+	<div class="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 gap-4">
 		{#each data.flashcards as flashcard}
 			<EditCard {flashcard} />
 		{/each}
@@ -117,7 +136,7 @@
 				return async ({ result }) => {
 					if ('data' in result && typeof result.data !== 'undefined' && result.data.success) {
 						$modalStore.open = false;
-						await invalidate('app:root');
+						await invalidate('app:updateCard');
 					}
 				};
 			}}
@@ -127,6 +146,43 @@
 				>Cancel</Button
 			>
 			<Button variant={'destructive'} type="submit">Yes</Button>
+		</form>
+	</DialogContent>
+</Dialog>
+<Dialog open={$modalStore.open && $modalStore.mode === 'create'}>
+	<DialogContent class="max-w-sm m-auto">
+		<DialogHeader>
+			<DialogTitle>Add FlashCard</DialogTitle>
+		</DialogHeader>
+		<form
+			method="POST"
+			action="/add/card?/addObj"
+			use:enhance={() => {
+				return async ({ result }) => {
+					if ('data' in result && typeof result.data !== 'undefined' && result.data.success) {
+						$modalStore.open = false;
+						await invalidate('app:updateCard');
+					}
+				};
+			}}
+		>
+			<div>
+				<Textarea name="question" placeholder="question" /><br />
+				<Textarea name="answer" placeholder="answer" /><br />
+				<!-- <Input type="text" name="subject" placeholder="subject" /><br /> -->
+				<input type="text" name="subject" bind:value={$page.params.subject} hidden />
+				<Select.Root>
+					<Select.Input name="box"></Select.Input>
+					<Select.Label>Classification</Select.Label>
+					<Select.Trigger><Select.Value placeholder="Select box" /></Select.Trigger>
+					<Select.Content>
+						{#each BoxOptions as boxOption}
+							<Select.Item value={boxOption}>{boxOption}</Select.Item>
+						{/each}
+					</Select.Content>
+				</Select.Root> <br />
+				<Button variant="default" type="submit">Submit</Button>
+			</div>
 		</form>
 	</DialogContent>
 </Dialog>

@@ -18,7 +18,7 @@ export type ModalState = {
 		question: string;
 		answer: string;
 	};
-	mode: 'edit' | 'delete';
+	mode: 'edit' | 'delete' | 'create';
 };
 
 export const modalStore = writable<ModalState>({
