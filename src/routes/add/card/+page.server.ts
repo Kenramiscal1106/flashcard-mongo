@@ -16,7 +16,6 @@ export const actions: Actions = {
 
 		try {
 			await Flashcard.create({ question, answer, subject, box });
-			console.log("created?")
 		} catch {
 			throw error(500, 'an error occured');
 		}
