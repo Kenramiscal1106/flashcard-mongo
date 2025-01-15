@@ -26,7 +26,7 @@
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
  
-    --primary: 0 0% 9%;
+    --primary: 217 91% 60%;
     --primary-foreground: 0 0% 98%;
  
     --secondary: 0 0% 96.1%;
@@ -41,6 +41,7 @@
     --ring: 0 0% 3.9%;
  
     --radius: 0.5rem;
+    
   }
  
   .dark {
@@ -73,6 +74,9 @@
  
     --ring: 0 0% 83.1%;
   }
+  html, body {
+    @apply  bg-neutral-100;
+  }
 }
  
 @layer base {
@@ -80,7 +84,7 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply text-foreground;
   }
   h1, h2, h3, h4, h5, h6 {
     @apply font-bold my-2 leading-normal;

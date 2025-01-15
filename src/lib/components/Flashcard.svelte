@@ -29,7 +29,9 @@
 	}
 </script>
 
-<div class="flex-[0_0_20rem] relative pers-10 min-h-[27rem] card">
+<div
+	class="flex-[0_0_20rem] sm:flex-[0_0_27rem] relative pers-10 min-h-[27rem] sm:min-h-[20rem] card"
+>
 	<Card
 		class={cn('z-10 duration-200 absolute w-full h-full top-0 left-0 flex flex-col')}
 		{open}

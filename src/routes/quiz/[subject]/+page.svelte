@@ -8,9 +8,9 @@
 
 	let item = 1;
 	function handleKeyDown(e: KeyboardEvent) {
-		if (e.key === 'ArrowRight') {
+		if (e.key === 'ArrowRight' && item < data.flashcards.length) {
 			item++;
-		} else if (e.key === 'ArrowLeft') {
+		} else if (e.key === 'ArrowLeft' && item > 1) {
 			item--;
 		}
 	}
@@ -39,12 +39,15 @@
 <!-- progress bar -->
 {#if data.flashcards.length > 1}
 	<div class="max-w-xl mx-auto my-3">
-		<div class="text-center my-1">
+		<div class="text-center my-1 font-semibold">
 			{item} / {data.flashcards.length}
 		</div>
-		<div class="relative bg-neutral-200 rounded-md h-3 z-30 overflow-hidden">
+	</div>
+
+	<div class="w-screen absolute top-0 left-0">
+		<div class="relative bg-neutral-200 h-1 z-30 overflow-hidden">
 			<div
-				class="absolute bg-blue-500 rounded-md h-3 transition-all duration-150"
+				class="absolute bg-blue-500 h-1 transition-all duration-150"
 				style:width={`${(item / data.flashcards.length) * 100}%`}
 			></div>
 		</div>

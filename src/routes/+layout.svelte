@@ -16,17 +16,18 @@
 <Menubar.Root>
 	<Menubar.Menu>
 		<div class="m-auto">
-			<a href="/" class={buttonVariants({ variant: $page.route.id === '/' ? 'default' : 'ghost' })}
-				>Home</a
+			<a
+				href="/"
+				class={buttonVariants({ variant: $page.route.id === '/' ? 'secondary' : 'ghost' })}>Home</a
 			>
 			<a
 				href="/quiz"
-				class={buttonVariants({ variant: $page.route.id === '/quiz' ? 'default' : 'ghost' })}
+				class={buttonVariants({ variant: $page.route.id === '/quiz' ? 'secondary' : 'ghost' })}
 				>Quiz</a
 			>
 		</div>
 	</Menubar.Menu>
 </Menubar.Root>
-<main class="p-4">
+<main class="p-4 bg-inherit">
 	<slot></slot>
 </main>

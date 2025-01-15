@@ -1,13 +1,25 @@
 <script lang="ts">
 	import { subjects } from '$lib';
+	import { Button } from '$lib/components/ui/button';
 </script>
 
 <svelte:head>
 	<title>Dashboard | Flashcard review</title>
 </svelte:head>
 
-<div class="max-w-full lg:max-w-4xl xl:max-w-5xl sm:max-w-2xl m-auto">
-	{#each subjects as subject}
-		<a href={`/cards/${subject.toLowerCase()}`}>{subject}</a> <br />
-	{/each}
+<div class="max-w-full md:max-w-3xl sm:max-w-2xl m-auto">
+	<div class="grid grid-cols-3 gap-4">
+		{#each subjects as subject}
+			<div
+				class="rounded-xl bg-card text-card-foreground shadow-md transition-shadow px-5 py-4 no-underline flex flex-col gap-4"
+			>
+				<div class="font-semibold text-xl">
+					{subject}
+				</div>
+				<div>
+					<Button href={'/cards/' + subject.toLowerCase()} class="no-underline">View</Button>
+				</div>
+			</div>
+		{/each}
+	</div>
 </div>
