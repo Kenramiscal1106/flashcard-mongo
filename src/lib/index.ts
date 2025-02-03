@@ -28,7 +28,8 @@ export const subjects = [
 	"Perdev",
 	"Biology",
 	"ResePro",
-	"Theofor"
+	"Theofor",
+	"Contare mid"
 	/* 
 	'Chemistry',
 	'Earth Science, Astronomy',
