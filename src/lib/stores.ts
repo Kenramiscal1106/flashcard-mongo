@@ -13,7 +13,7 @@ export type ModalState = {
 	open: boolean;
 	flashcard: {
 		_id: string;
-		subject: string;
+		subject: string | undefined;
 		box?: (typeof BoxOptions)[number];
 		question: string;
 		answer: string;

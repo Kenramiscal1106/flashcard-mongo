@@ -45,9 +45,9 @@
 	</div>
 
 	<div class="w-screen absolute top-0 left-0">
-		<div class="relative bg-neutral-200 h-1 z-30 overflow-hidden">
+		<div class="relative bg-neutral-200 h-2 z-30 overflow-hidden">
 			<div
-				class="absolute bg-blue-500 h-1 transition-all duration-150"
+				class="absolute bg-blue-500 h-full transition-all duration-150"
 				style:width={`${(item / data.flashcards.length) * 100}%`}
 			></div>
 		</div>
